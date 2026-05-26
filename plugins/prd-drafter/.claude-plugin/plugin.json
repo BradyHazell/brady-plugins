@@ -1,0 +1,20 @@
+{
+  "name": "prd-drafter",
+  "version": "1.0.0",
+  "description": "Drafts Product Requirements Documents through conversational discovery. Acts as a PM, not a stenographer — challenges scope, surfaces hidden assumptions, and treats Open Questions as a first-class output so the PRD is genuinely useful as a source of truth for implementation.",
+  "author": {
+    "name": "BradyHazell",
+    "url": "https://github.com/BradyHazell"
+  },
+  "homepage": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/prd-drafter",
+  "repository": "https://github.com/BradyHazell/brady-plugins",
+  "license": "MIT",
+  "keywords": [
+    "prd",
+    "product",
+    "requirements",
+    "documentation",
+    "claude-code",
+    "claude-plugin"
+  ]
+}

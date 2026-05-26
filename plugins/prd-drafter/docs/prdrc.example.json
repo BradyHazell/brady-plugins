@@ -1,0 +1,13 @@
+{
+  "outputPath": "./docs/prds",
+  "fileNaming": "title-case",
+  "statusFolders": {
+    "Draft": "in-progress",
+    "In Review": "in-progress",
+    "Approved": "in-progress",
+    "Shipped": "shipped"
+  },
+  "statusLifecycle": ["Draft", "In Review", "Approved", "Shipped"],
+  "projects": ["billing", "auth", "notifications"],
+  "headerLinkFields": ["Figma", "Linear epic", "Jira ticket"]
+}
