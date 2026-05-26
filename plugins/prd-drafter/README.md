@@ -55,6 +55,15 @@ See [`AGENTS.md`](./AGENTS.md) in this folder for the plugin's internal layout.
 
 ## Skills
 
+Workflow skills (orchestrators — agent-agnostic equivalents of the Claude Code commands):
+
+| Skill | Purpose |
+|---|---|
+| `prd-draft` | End-to-end workflow for creating a new PRD (discovery → drafting → validation). Use in non-Claude agents when the slash command isn't available. |
+| `prd-update` | Workflow for updating an existing PRD across the three flows (resolve open questions, scope change, status promotion). |
+
+Knowledge skills (reference content the workflow skills lean on):
+
 | Skill | Purpose |
 |---|---|
 | `prd-template` | The canonical PRD section structure — required sections, conditional sections, header block, output skeleton. |
@@ -222,10 +231,12 @@ prd-drafter/
 │   ├── update.md
 │   └── validate.md
 ├── skills/
-│   ├── prd-template/SKILL.md
-│   ├── prd-discovery/SKILL.md
-│   ├── prd-quality/SKILL.md
-│   └── prd-conventions/SKILL.md
+│   ├── prd-draft/SKILL.md         ← workflow: orchestrates new-PRD creation
+│   ├── prd-update/SKILL.md        ← workflow: orchestrates update flows
+│   ├── prd-template/SKILL.md      ← knowledge: section structure
+│   ├── prd-discovery/SKILL.md     ← knowledge: conversation approach
+│   ├── prd-quality/SKILL.md       ← knowledge: validation rubric
+│   └── prd-conventions/SKILL.md   ← knowledge: file/folder/status rules
 ├── docs/
 │   ├── prdrc-schema.md
 │   └── prdrc.example.json

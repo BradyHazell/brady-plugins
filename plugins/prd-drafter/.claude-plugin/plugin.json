@@ -1,6 +1,6 @@
 {
   "name": "prd-drafter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Drafts Product Requirements Documents through conversational discovery. Acts as a PM, not a stenographer — challenges scope, surfaces hidden assumptions, and treats Open Questions as a first-class output so the PRD is genuinely useful as a source of truth for implementation.",
   "author": {
     "name": "BradyHazell",

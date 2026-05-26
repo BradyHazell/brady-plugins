@@ -23,10 +23,12 @@ prd-drafter/
 │   ├── update.md                # /prd-drafter:update <path>
 │   └── validate.md              # /prd-drafter:validate <path>
 ├── skills/
-│   ├── prd-template/SKILL.md    # canonical section structure + output skeleton
-│   ├── prd-discovery/SKILL.md   # how to conduct the interview
-│   ├── prd-quality/SKILL.md     # validator's rubric
-│   └── prd-conventions/SKILL.md # file/folder/status conventions (reads .prdrc.json)
+│   ├── prd-draft/SKILL.md       # WORKFLOW — orchestrates new-PRD creation (Claude-agnostic)
+│   ├── prd-update/SKILL.md      # WORKFLOW — orchestrates update flows (Claude-agnostic)
+│   ├── prd-template/SKILL.md    # knowledge — canonical section structure + output skeleton
+│   ├── prd-discovery/SKILL.md   # knowledge — how to conduct the interview
+│   ├── prd-quality/SKILL.md     # knowledge — validator's rubric
+│   └── prd-conventions/SKILL.md # knowledge — file/folder/status conventions (reads .prdrc.json)
 ├── docs/
 │   ├── prdrc-schema.md          # full .prdrc.json schema reference
 │   └── prdrc.example.json       # copy-paste starting point
@@ -42,13 +44,17 @@ When a contributor (or you, an AI agent) extends the plugin, the destination dep
 
 | Adding... | Where it goes | Bumps |
 |---|---|---|
-| A new conditional section in the PRD template | `skills/prd-template/SKILL.md` (add to the table + trigger list) AND `agents/prd-interviewer.md` (Phase 4 trigger list) | MINOR |
+| A new conditional section in the PRD template | `skills/prd-template/SKILL.md` (add to the table + trigger list) AND `agents/prd-interviewer.md` (Phase 4 trigger list) AND `skills/prd-draft/SKILL.md` (Phase 4 list) | MINOR |
 | A new validation check | `skills/prd-quality/SKILL.md` (rubric) AND `agents/prd-validator.md` (Process step) | MINOR |
 | A new `.prdrc.json` config field | `skills/prd-conventions/SKILL.md` (defaults) AND `docs/prdrc-schema.md` (schema doc) AND `docs/prdrc.example.json` if it's commonly used | MINOR for additive, MAJOR if it changes a default |
-| A new interview question for an existing phase | `skills/prd-discovery/SKILL.md` | PATCH (clarification) or MINOR (new mandatory question) |
-| A new slash command | `commands/<name>.md` + reference in `README.md` + reference in `AGENTS.md` here | MINOR |
+| A new interview question for an existing phase | `skills/prd-discovery/SKILL.md` AND mirror in `skills/prd-draft/SKILL.md` (Phase X block) | PATCH (clarification) or MINOR (new mandatory question) |
+| A change to the new-PRD workflow itself | `skills/prd-draft/SKILL.md` AND the corresponding `agents/prd-interviewer.md` + `agents/prd-drafter.md` + `commands/draft.md` so Claude and non-Claude users stay in sync | MINOR (additive) or MAJOR (behavior change) |
+| A change to the update workflow | `skills/prd-update/SKILL.md` AND `agents/prd-updater.md` + `commands/update.md` | MINOR or MAJOR per above |
+| A new slash command | `commands/<name>.md` + reference in `README.md` + reference in `AGENTS.md` here. If it has cross-agent value, add a parallel workflow skill in `skills/`. | MINOR |
 | A new agent | `agents/<name>.md` + reference in any command that should invoke it | MINOR |
 | Typo / clarification / no-behavior-change edit | wherever the typo is | PATCH |
+
+**Critical**: the workflow skills (`prd-draft`, `prd-update`) and the Claude-Code primitives (commands + named agents) are parallel implementations of the same behavior. When one changes, the other must change too. Drift between them means Claude users and non-Claude users get different behavior, which is the worst possible outcome.
 
 ## Versioning rules (plugin-specific elaboration)
 

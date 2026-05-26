@@ -9,7 +9,7 @@
       "name": "prd-drafter",
       "source": "./plugins/prd-drafter",
       "description": "Drafts Product Requirements Documents through conversational discovery. Acts as a PM, not a stenographer — challenges scope, surfaces hidden assumptions, treats Open Questions as a first-class output.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "documentation",
       "keywords": [
         "prd",
