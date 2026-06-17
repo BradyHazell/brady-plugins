@@ -5,6 +5,12 @@ All notable changes to the prd-drafter plugin are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] — 2026-06-17
+
+### Changed
+- PRD headers no longer include Figma or Linear epic link fields by default.
+- Additional header link fields are now added only when `headerLinkFields` is defined in `.prdrc.json`.
+
 ## [1.2.0] — 2026-06-16
 
 ### Added

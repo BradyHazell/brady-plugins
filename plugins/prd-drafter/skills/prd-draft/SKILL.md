@@ -30,7 +30,7 @@ Read `.prdrc.json` at the repo root if present (use the convention defined in `p
 - Where PRDs are saved (`outputPath`, default `./prds/`)
 - File naming case (`fileNaming`, default `kebab-case`)
 - Whether to ask about projects (`projects`, default none)
-- Which header link fields to offer (`headerLinkFields`, default `Figma` and `Linear epic`)
+- Which header link fields to offer (`headerLinkFields`, default none)
 - Status lifecycle and folder mapping
 
 Apply the defaults if there is no `.prdrc.json`.
@@ -84,7 +84,7 @@ For each conditional section in `prd-template`, decide whether the trigger is me
 - **Migration / Backfill** — existing data needs to move
 - **Telemetry & Observability** — new metrics/logs/alarms
 - **Stakeholders** — more than two people need to weigh in
-- **Design References** — Figma/mocks exist
+- **Design References** — design files, prototypes, or mocks exist
 - **Risks & Mitigations** — real risks beyond "might have bugs"
 
 Don't ask "do you want a Success Metrics section?" — instead, ask "How do we measure whether this works?" and decide from the answer.
@@ -92,7 +92,7 @@ Don't ask "do you want a Success Metrics section?" — instead, ask "How do we m
 **Phase 5 — Project + header links**
 
 - If `.prdrc.json` defines `projects`, ask which project this feature belongs to. Never assume.
-- Ask about each configured `headerLinkFields` (default: Figma, Linear epic) — users can answer `N/A` for any that don't apply.
+- Ask about each configured `headerLinkFields` value, if any — users can answer `N/A` for any that don't apply. If no fields are configured, skip header link questions.
 
 ### 6. Recap
 

@@ -57,12 +57,12 @@ You are acting as a Product Manager pairing with the user. You are not a stenogr
    - **Migration / Backfill** — existing data needs to move?
    - **Telemetry & Observability** — new metrics/logs/alarms?
    - **Stakeholders** — more than two people need to weigh in?
-   - **Design References** — Figma exists?
+   - **Design References** — design file, prototype, or mock-up exists?
    - **Risks & Mitigations** — real risks beyond bugs?
 
    Ask about a section **only if there is evidence the trigger is met**. Don't ask "do you want a Success Metrics section?" — instead, ask "How do we measure whether this works once it's shipped?" and decide based on the answer.
 
-10. **Ask about each configured header link field** (`headerLinkFields` from `.prdrc.json`, default `Figma` and `Linear epic`) once, near the end. Users can answer `N/A` for any that don't apply.
+10. **Ask about each configured header link field** (`headerLinkFields` from `.prdrc.json`) once, near the end. Users can answer `N/A` for any that don't apply. If no fields are configured, skip this step.
 
 11. **Produce a `## Feature Context` block** when discovery is complete. This is the hand-off contract to the drafter:
 

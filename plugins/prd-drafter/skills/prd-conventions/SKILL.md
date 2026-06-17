@@ -33,7 +33,7 @@ The full schema is documented in `docs/prdrc-schema.md` at the plugin root.
 | Status folders | none — all PRDs live flat in `./prds/`, status tracked in frontmatter only |
 | Status lifecycle | `Draft → In Review → Approved → Shipped` |
 | Projects | none — single-repo, no project association required |
-| Header link fields | `Figma`, `Linear epic` (offered, both optional) |
+| Header link fields | none — extra header rows are only added when configured via `.prdrc.json` |
 
 So in a fresh repo with no config, a draft PRD for an "Alarm Centre" feature saves to `./prds/alarm-centre.md` with `Status: Draft` in its frontmatter.
 
@@ -82,7 +82,7 @@ If `statusFolders` is set, the file is placed inside the folder matching its sta
 
 ### `headerLinkFields`
 
-The list of optional link fields offered in the PRD header. Defaults to `["Figma", "Linear epic"]`. Common additions: `Jira ticket`, `Notion doc`, `Loom walkthrough`, `Slack thread`. The agent will offer each as an `AskUserQuestion` option during discovery; users can answer `N/A` for any that don't apply.
+The list of optional link fields offered in the PRD header. Defaults to `[]`, so no extra header rows are added unless the target repo opts in through `.prdrc.json`. Common additions: `Figma`, `Linear epic`, `Jira ticket`, `Notion doc`, `Loom walkthrough`, `Slack thread`. The agent will offer each configured field as an `AskUserQuestion` option during discovery; users can answer `N/A` for any that don't apply.
 
 ## Status Lifecycle
 
@@ -120,7 +120,7 @@ When the drafter or updater is ready to save:
 
 ## Linked Documents
 
-A PRD may link to external docs. The default header link fields are `Figma` and `Linear epic`, but `.prdrc.json` can extend this. Common additions:
+A PRD may link to external docs. By default, no linked-document rows are added to the header; `.prdrc.json` defines any additional header link fields the repo wants to track. Common additions:
 
 - **Design**: Figma, Sketch, Penpot
 - **Tracking**: Linear, Jira, GitHub issue, Notion task
@@ -133,6 +133,6 @@ Use `N/A` (not blank) when a link does not apply, so the field clearly reflects 
 
 - **Saving without checking `.prdrc.json`** — a config file may exist that the user expects to be honoured.
 - **Saving without asking which project** when `projects` is non-empty — never assume.
-- **Pasting screenshots into the PRD** instead of linking — bloats the file and breaks AI readability. Always link to the source (Figma URL, etc.).
+- **Pasting screenshots into the PRD** instead of linking — bloats the file and breaks AI readability. Always link to the source document or design file.
 - **Overwriting a Shipped PRD** when iterating — open a new version (`-v2`) instead. Shipped is a historical artefact.
 - **Hardcoding paths in the conversation** — always recompute from the resolved config so future agents stay consistent.

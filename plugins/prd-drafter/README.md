@@ -75,7 +75,7 @@ Knowledge skills (reference content the workflow skills lean on):
 
 ## Configuration: `.prdrc.json`
 
-By default, PRDs save to `./prds/[feature-name].md` with kebab-case names and status tracked in frontmatter. That suits most single-repo projects.
+By default, PRDs save to `./prds/[feature-name].md` with kebab-case names, status tracked in frontmatter, and no extra tool-specific header links. That suits most single-repo projects.
 
 For richer conventions — multi-project repos, status subfolders, custom lifecycle, additional header link fields — drop a `.prdrc.json` at your repo root:
 
@@ -102,7 +102,7 @@ See [`docs/prdrc-schema.md`](./docs/prdrc-schema.md) for the full schema with wo
 Every PRD produced by this plugin has:
 
 **Required sections** (always):
-1. Header (Status, Author, Date, Version + optional Project + configured link fields)
+1. Header (Status, Author, Date, Version + optional Project + any configured link fields)
 2. Problem Statement
 3. Goal
 4. User Stories
@@ -120,7 +120,7 @@ Every PRD produced by this plugin has:
 - Migration / Backfill — when existing data needs to move
 - Telemetry & Observability — when new metrics/logs/alarms are needed
 - Stakeholders — when more than two people need to weigh in
-- Design References — when Figma/mocks exist
+- Design References — when design files, prototypes, or mocks exist
 - Risks & Mitigations — when real risks exist beyond "might have bugs"
 
 Conditional sections that don't apply are **omitted entirely** rather than filled with "N/A".

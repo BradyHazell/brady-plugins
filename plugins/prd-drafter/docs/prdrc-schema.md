@@ -13,7 +13,7 @@ All fields are optional. Omit a field to fall back to the default for that field
   "statusFolders": null,
   "statusLifecycle": ["Draft", "In Review", "Approved", "Shipped"],
   "projects": [],
-  "headerLinkFields": ["Figma", "Linear epic"]
+  "headerLinkFields": []
 }
 ```
 
@@ -87,9 +87,9 @@ A PRD for the `billing` project saves to `[outputPath]/billing/[status-folder]/[
 
 Use a flat array of slug strings. If you need richer project metadata (description, owner), open an issue — the schema can be extended.
 
-### `headerLinkFields` *(array of strings, default `["Figma", "Linear epic"]`)*
+### `headerLinkFields` *(array of strings, default `[]`)*
 
-Optional link fields offered in the PRD header. The interviewer asks about each during discovery; users can answer `N/A` for any that don't apply.
+Optional link fields offered in the PRD header. No extra header rows are added by default; define each additional header field your repo wants in `.prdrc.json`. The interviewer asks about each configured field during discovery; users can answer `N/A` for any that don't apply.
 
 ```json
 "headerLinkFields": ["Figma", "Linear epic", "Jira ticket", "Loom walkthrough"]
@@ -110,6 +110,8 @@ No `.prdrc.json`. Defaults apply. A draft PRD for "User Onboarding" saves to:
 ```
 ./prds/user-onboarding.md
 ```
+
+The generated header contains only the required metadata fields unless `.prdrc.json` defines additional `headerLinkFields`.
 
 ### Example 2 — Docs-folder convention
 

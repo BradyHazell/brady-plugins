@@ -48,7 +48,7 @@ Conditional sections (must be present **when triggered** — see `prd-template`)
 | Migration / Backfill | Existing data must be migrated |
 | Telemetry & Observability | New metrics/logs/alarms needed |
 | Stakeholders | More than two people need to weigh in |
-| Design References | Figma/mock-up exists |
+| Design References | Design file, prototype, or mock-up exists |
 | Risks & Mitigations | Real risks beyond "might have bugs" |
 
 The validator flags a missing conditional section only when it has evidence the trigger is met (e.g. PRD mentions "new tables" but no Data Model Changes section).

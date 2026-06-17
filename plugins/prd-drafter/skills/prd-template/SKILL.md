@@ -57,7 +57,7 @@ Include these **only when relevant**. The drafter should make the judgement call
 | **Migration / Backfill** | Existing data needs to be migrated, backfilled, or transformed for the feature to work. |
 | **Telemetry & Observability** | New metrics, logs, alarms, or dashboards are needed beyond standard request logging. |
 | **Stakeholders** | More than two people need to weigh in (e.g. cross-team feature, customer-driven request, ops involvement). |
-| **Design References** | A Figma file, prototype, or mock-up exists. Link to it; do not paste images into the PRD. |
+| **Design References** | A design file, prototype, or mock-up exists. Link to it; do not paste images into the PRD. |
 | **Risks & Mitigations** | The feature has real-world risks beyond "it might have bugs" — e.g. data loss, customer escalation, compliance, regression in a sensitive area. |
 
 If a conditional section does not apply, **omit it entirely** rather than writing "N/A". A PRD with eight tight sections beats one with fifteen padded sections.
@@ -157,11 +157,10 @@ If the repo's `.prdrc.json` defines `projects`, also add:
 **Project:** [project slug from config]
 ```
 
-Then add a row for each configured `headerLinkFields` value (default: `Figma`, `Linear epic`):
+If `.prdrc.json` configures `headerLinkFields`, add one row for each configured value. With no config, do not add Linear, Figma, or any other extra header rows:
 
 ```markdown
-**Figma:** [link or N/A]
-**Linear epic:** [link or N/A]
+**[Configured header field]:** [link or N/A]
 ```
 
 `Status` ladders cleanly along the configured `statusLifecycle` (default: `Draft → In Review → Approved → Shipped`). When status moves to Shipped, the file moves to the shipped folder (if `statusFolders` is set) — see `prd-conventions`.
