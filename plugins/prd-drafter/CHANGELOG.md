@@ -5,6 +5,15 @@ All notable changes to the prd-drafter plugin are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-06-16
+
+### Added
+- `prd-to-html` skill for converting PRD Markdown files into standalone browser-printable HTML documents.
+- Bundled `scripts/prd_to_html.py` converter with dark screen styling, light print styling, PRD metadata formatting, Open Questions formatting, lists, tables, code, blockquotes, and links.
+
+### Changed
+- Marketplace and plugin descriptions now mention structured updates and HTML export.
+
 ## [1.1.0] — 2026-05-26
 
 ### Added

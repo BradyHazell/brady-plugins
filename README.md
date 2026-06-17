@@ -33,7 +33,7 @@ npx skills add BradyHazell/brady-plugins -a cursor
 
 | Plugin | Version | Summary |
 |---|---|---|
-| [**prd-drafter**](./plugins/prd-drafter) | 1.0.0 | Drafts Product Requirements Documents through conversational discovery. Acts as a PM, not a stenographer — challenges scope, surfaces hidden assumptions, treats Open Questions as a first-class output. Configurable per-repo via `.prdrc.json`. |
+| [**prd-drafter**](./plugins/prd-drafter) | 1.2.0 | Drafts Product Requirements Documents through conversational discovery, supports structured updates, and exports PRDs to browser-printable HTML. Configurable per-repo via `.prdrc.json`. |
 
 Each plugin has its own README with full details — click the plugin name above.
 

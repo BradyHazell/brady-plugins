@@ -4,7 +4,7 @@ Plugin-specific guidance for any AI agent maintaining or extending `prd-drafter`
 
 ## What this plugin does
 
-Walks a user through a conversational PRD discovery, drafts the document, validates it, and supports updates over time. Output is a markdown file with structured sections, `**Question:** / **Answer:** TBC` open questions, and a changelog.
+Walks a user through a conversational PRD discovery, drafts the document, validates it, supports updates over time, and exports PRD Markdown to browser-printable HTML. The source output is a markdown file with structured sections, `**Question:** / **Answer:** TBC` open questions, and a changelog.
 
 Behavioural philosophy: act like a PM, not a stenographer. Challenge scope, surface assumptions, push back on vague language, treat Open Questions as first-class output.
 
@@ -25,6 +25,7 @@ prd-drafter/
 ├── skills/
 │   ├── prd-draft/SKILL.md       # WORKFLOW — orchestrates new-PRD creation (Claude-agnostic)
 │   ├── prd-update/SKILL.md      # WORKFLOW — orchestrates update flows (Claude-agnostic)
+│   ├── prd-to-html/SKILL.md     # WORKFLOW — converts PRD Markdown to browser-printable HTML
 │   ├── prd-template/SKILL.md    # knowledge — canonical section structure + output skeleton
 │   ├── prd-discovery/SKILL.md   # knowledge — how to conduct the interview
 │   ├── prd-quality/SKILL.md     # knowledge — validator's rubric
@@ -50,6 +51,7 @@ When a contributor (or you, an AI agent) extends the plugin, the destination dep
 | A new interview question for an existing phase | `skills/prd-discovery/SKILL.md` AND mirror in `skills/prd-draft/SKILL.md` (Phase X block) | PATCH (clarification) or MINOR (new mandatory question) |
 | A change to the new-PRD workflow itself | `skills/prd-draft/SKILL.md` AND the corresponding `agents/prd-interviewer.md` + `agents/prd-drafter.md` + `commands/draft.md` so Claude and non-Claude users stay in sync | MINOR (additive) or MAJOR (behavior change) |
 | A change to the update workflow | `skills/prd-update/SKILL.md` AND `agents/prd-updater.md` + `commands/update.md` | MINOR or MAJOR per above |
+| A new export or formatting workflow | `skills/<name>/SKILL.md` plus bundled `scripts/` when deterministic output matters. Update `README.md` and this file so the workflow is discoverable. | MINOR |
 | A new slash command | `commands/<name>.md` + reference in `README.md` + reference in `AGENTS.md` here. If it has cross-agent value, add a parallel workflow skill in `skills/`. | MINOR |
 | A new agent | `agents/<name>.md` + reference in any command that should invoke it | MINOR |
 | Typo / clarification / no-behavior-change edit | wherever the typo is | PATCH |
@@ -125,6 +127,7 @@ There's no automated test suite (yet). Verify changes by:
 3. Running `/prd-drafter:update` against an existing PRD (try all three flows).
 4. Running `/prd-drafter:validate` against PRDs in good and bad shape.
 5. Checking that the validator catches what the change was supposed to introduce.
+6. If touching `prd-to-html`, running `skills/prd-to-html/scripts/prd_to_html.py` against a real PRD and confirming the HTML contains dark screen styles plus a light `@media print` stylesheet.
 
 ## What this plugin should NOT do
 

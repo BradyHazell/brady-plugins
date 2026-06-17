@@ -1,6 +1,6 @@
 # prd-drafter
 
-Drafts Product Requirements Documents through conversational discovery — not template filling.
+Drafts Product Requirements Documents through conversational discovery — not template filling — and exports them to browser-printable HTML for review copies.
 
 > **The purpose of a PRD is to make it clear what feature we want to implement, surface unknowns, challenge assumptions, and discuss approaches so the document is genuinely useful as a source of truth for implementation.**
 
@@ -10,6 +10,7 @@ A well-written PRD lets an engineer pick up a feature and build it without re-as
 2. **Treating Open Questions as a first-class output** — questions are kept verbatim with `**Answer:** TBC` until resolved, then become the decision log
 3. **Adapting the template to the feature** — backend-only changes don't get a Feature Flag section; user-invisible work doesn't get Success Metrics
 4. **Honouring your repo's conventions** — drop a `.prdrc.json` at the repo root to point the plugin at your folder structure, status workflow, and project layout
+5. **Exporting clean review copies** — turn PRD Markdown into standalone HTML with a dark screen theme and light print stylesheet for browser PDF export
 
 > This is one plugin in the [`brady-plugins`](https://github.com/BradyHazell/brady-plugins) marketplace.
 
@@ -55,12 +56,13 @@ See [`AGENTS.md`](./AGENTS.md) in this folder for the plugin's internal layout.
 
 ## Skills
 
-Workflow skills (orchestrators — agent-agnostic equivalents of the Claude Code commands):
+Workflow and utility skills (agent-agnostic workflows that can run without slash commands):
 
 | Skill | Purpose |
 |---|---|
 | `prd-draft` | End-to-end workflow for creating a new PRD (discovery → drafting → validation). Use in non-Claude agents when the slash command isn't available. |
 | `prd-update` | Workflow for updating an existing PRD across the three flows (resolve open questions, scope change, status promotion). |
+| `prd-to-html` | Converts an existing PRD Markdown file into standalone browser-printable HTML with dark screen styling and light print styling. |
 
 Knowledge skills (reference content the workflow skills lean on):
 
@@ -233,6 +235,7 @@ prd-drafter/
 ├── skills/
 │   ├── prd-draft/SKILL.md         ← workflow: orchestrates new-PRD creation
 │   ├── prd-update/SKILL.md        ← workflow: orchestrates update flows
+│   ├── prd-to-html/SKILL.md       ← workflow: exports PRD Markdown to printable HTML
 │   ├── prd-template/SKILL.md      ← knowledge: section structure
 │   ├── prd-discovery/SKILL.md     ← knowledge: conversation approach
 │   ├── prd-quality/SKILL.md       ← knowledge: validation rubric
