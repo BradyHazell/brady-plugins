@@ -17,6 +17,20 @@
         "documentation",
         "drafting"
       ]
+    },
+    {
+      "name": "pr-review",
+      "source": "./plugins/pr-review",
+      "description": "Reviews pull requests from a PR number or URL by fetching the diff from the current repository, drafting concise inline review comments, surfacing missing tests, risks, best-practice concerns, and author questions without posting anything.",
+      "version": "1.0.0",
+      "category": "review",
+      "keywords": [
+        "code-review",
+        "pull-request",
+        "github",
+        "azure-devops",
+        "review"
+      ]
     }
   ]
 }

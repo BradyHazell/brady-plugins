@@ -1,0 +1,19 @@
+{
+  "name": "pr-review",
+  "version": "1.0.0",
+  "description": "Reviews pull requests from a PR number or URL by fetching the diff from the current repository, drafting concise inline review comments, surfacing missing tests, risks, best-practice concerns, and author questions without posting anything.",
+  "author": {
+    "name": "BradyHazell",
+    "url": "https://github.com/BradyHazell"
+  },
+  "homepage": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/pr-review",
+  "repository": "https://github.com/BradyHazell/brady-plugins",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "pull-request",
+    "github",
+    "azure-devops",
+    "review"
+  ]
+}
