@@ -84,6 +84,11 @@ Questions that apply to a whole file appear under File-level questions. Question
 - Run from inside the repository that contains the PR.
 - GitHub PRs use the GitHub CLI (`gh`) by default.
 - Azure DevOps PRs use the Azure CLI with the DevOps extension (`az repos`) and git ref fetching.
+  Metadata can be fetched with:
+
+  ```bash
+  az repos pr show --id <id> --org https://dev.azure.com/<org> -o json
+  ```
 - If a provider CLI cannot fetch the diff, provide a PR diff export manually.
 
 ## Local Checks

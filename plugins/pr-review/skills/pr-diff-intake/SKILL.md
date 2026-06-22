@@ -83,7 +83,7 @@ Parse from URL:
 Metadata:
 
 ```bash
-az repos pr show --id <id> --org https://dev.azure.com/<org> --project <project>
+az repos pr show --id <id> --org https://dev.azure.com/<org> -o json
 ```
 
 From the metadata, capture:
