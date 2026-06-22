@@ -25,6 +25,25 @@ A well-written PRD lets an engineer pick up a feature and build it without re-as
 
 ### Other agents (Codex, Cursor, Goose, etc.)
 
+Preferred open-plugin CLI:
+
+```bash
+# Confirm the repo is discoverable
+npx plugins discover BradyHazell/brady-plugins
+
+# Auto-detect installed targets
+npx plugins add BradyHazell/brady-plugins
+
+# If auto-detect says "No supported targets detected", choose one explicitly
+npx plugins add BradyHazell/brady-plugins --target codex
+npx plugins add BradyHazell/brady-plugins --target cursor
+npx plugins add BradyHazell/brady-plugins --target claude-code
+```
+
+The auto-detect path requires the target binary to be on `PATH`. Use `--target` when the CLI cannot find `claude`, `cursor`, or `codex` automatically.
+
+Legacy skills CLI:
+
 ```bash
 # Auto-detect installed agents
 npx skills add BradyHazell/brady-plugins
