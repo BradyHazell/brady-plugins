@@ -42,15 +42,17 @@ Follow Semantic Versioning (`MAJOR.MINOR.PATCH`):
 
 | Bump | When |
 |---|---|
-| **PATCH** (`1.0.0 → 1.0.1`) | Typo fixes, doc-only changes, prompt clarifications that don't change behaviour, tightening an example, no schema changes |
+| **PATCH** (`1.0.0 → 1.0.1`) | Prompt or installable-content clarifications that don't change behaviour, tightening an example, no schema changes |
 | **MINOR** (`1.0.0 → 1.1.0`) | New agent, new skill, new command, new optional config field, new conditional section in the template, new behaviour that's strictly additive and backward-compatible |
 | **MAJOR** (`1.0.0 → 2.0.0`) | Removed agent/command/skill, renamed config field, changed default behaviour, breaking change to file layout or save-path logic, anything that would surprise an existing user |
 
 When in doubt, lean toward the larger bump — users tolerate "more" updates better than they tolerate surprise breakage.
 
+README-only installation docs, marketplace docs, typo fixes, and other changes that do not alter installed plugin behaviour or agent-consumed content do not require a plugin version bump.
+
 ## What to do when you change a plugin
 
-A change to any file under `plugins/<name>/` should result in:
+A change to installed plugin behaviour or agent-consumed content under `plugins/<name>/` should result in:
 
 1. **Update `plugins/<name>/CHANGELOG.md`** — add an entry under a new version heading (or under `## [Unreleased]` if you're not bumping yet). Use the Keep a Changelog format already present.
 2. **Bump the version** in `plugins/<name>/.claude-plugin/plugin.json` per the rules above.
@@ -140,5 +142,5 @@ The `description` and `version` in marketplace.json must match the per-plugin `p
 - **Bundling unrelated plugin changes** in one commit — makes it hard to release each plugin independently.
 - **Adding "Claude" to a prompt** because the plugin is Claude-Code-installed — the *mechanism* is Claude Code, but the *content* should stay portable.
 - **Editing CLAUDE.md** instead of AGENTS.md — CLAUDE.md is just an import pointer; edits go to the source.
-- **Skipping the CHANGELOG entry** for a "tiny" change — every behavioral change is worth noting, even patch-level. A four-line CHANGELOG is fine; a missing one is not.
+- **Skipping the CHANGELOG entry** for a "tiny" behaviour or installable-content change — every behavioral change is worth noting, even patch-level. A four-line CHANGELOG is fine; a missing one is not.
 - **Promoting status / shipping behaviour silently** in any plugin that touches files — always confirm with the user before destructive or hard-to-reverse actions.
