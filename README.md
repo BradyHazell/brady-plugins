@@ -83,10 +83,10 @@ Each plugin has its own README with full details — click the plugin name above
 
 ## Contributing
 
-This is a personal repo, but issues and PRs are welcome.
+This is a personal repo, but issues and pull requests are open for suggestions, new plugin ideas, prompt improvements, and compatibility fixes for other agents.
 
-- **Contributors**: see [`AGENTS.md`](./AGENTS.md) at the repo root for conventions, versioning rules, and how to add a new plugin.
-- **AI agents helping maintain the repo**: the same `AGENTS.md` is your instruction manual.
+- **Human contributors**: see [`CONTRIBUTING.md`](./CONTRIBUTING.md) for conventions, versioning rules, and how to add a new plugin.
+- **AI agents helping maintain the repo**: see [`AGENTS.md`](./AGENTS.md) for the agent instruction manual.
 
 ## License
 
