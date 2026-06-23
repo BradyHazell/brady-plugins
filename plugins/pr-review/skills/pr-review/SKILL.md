@@ -59,6 +59,14 @@ Collect:
 
 If the input is a number, assume the current GitHub repository unless the remote clearly points at Azure DevOps. If a URL is provided, use the provider implied by the URL.
 
+For Azure DevOps PRs, follow `pr-diff-intake` exactly for metadata lookup. The first metadata command is:
+
+```bash
+az repos pr show --id <id> --org https://dev.azure.com/<org> -o json
+```
+
+Do not add `--project` to that metadata command.
+
 ### 3. Read the code around the diff
 
 Start from the diff. Read full changed files only when the snippet is not enough to understand behavior.

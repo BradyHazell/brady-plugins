@@ -39,6 +39,7 @@ Load and use these skills as needed:
 
 2. **Fetch review context without mutating the PR.**
    - Read PR metadata: title, author, base branch, head branch, changed files, additions/deletions, and description if available.
+   - For Azure DevOps metadata, use `az repos pr show --id <id> --org https://dev.azure.com/<org> -o json` exactly. Do not add `--project`; this subcommand may reject it even when the PR URL contains a project.
    - Fetch a unified diff with enough context to understand changed behavior.
    - Read changed files directly when the diff is too narrow.
    - Do not post comments, submit reviews, approve, request changes, push commits, or check out branches unless the user explicitly asks.

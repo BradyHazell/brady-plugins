@@ -1,6 +1,6 @@
 {
   "name": "pr-review",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Reviews pull requests from a PR number or URL by fetching the diff from the current repository, drafting concise inline review comments, surfacing missing tests, risks, best-practice concerns, and author questions without posting anything.",
   "author": {
     "name": "BradyHazell",

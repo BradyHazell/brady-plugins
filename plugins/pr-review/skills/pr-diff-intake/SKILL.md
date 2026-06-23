@@ -80,11 +80,13 @@ Parse from URL:
 - Repository
 - Pull request ID
 
-Metadata:
+Metadata must be fetched before branch/ref fetches. For Azure DevOps, pull request IDs are organization-scoped for this command, so run this exact shape first:
 
 ```bash
 az repos pr show --id <id> --org https://dev.azure.com/<org> -o json
 ```
+
+Do not add `--project` to `az repos pr show`. Some Azure DevOps CLI versions reject it for this subcommand. Use the parsed project only for repository identity checks, URL reconstruction, or later fallback commands that explicitly accept a project argument.
 
 From the metadata, capture:
 

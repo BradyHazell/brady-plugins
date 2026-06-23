@@ -64,6 +64,8 @@ GitHub is the default for numeric PR inputs when the current remote is GitHub. A
 
 Provider logic lives in `skills/pr-diff-intake/SKILL.md`. Keep command snippets read-only and avoid checkout-based flows unless the user explicitly asks.
 
+For Azure DevOps metadata, keep the command shape as `az repos pr show --id <id> --org https://dev.azure.com/<org> -o json`. Do not add `--project`; the PR URL contains a project, but this metadata subcommand can reject the project flag.
+
 ## Local checks
 
 The reviewer may run safe checks only after inspecting the repository conventions. Good candidates are explicit lint, typecheck, or targeted test scripts.

@@ -21,6 +21,7 @@ If no PR identifier was provided, ask the user for one concise follow-up questio
 2. The reviewer agent will:
    - Resolve the PR provider from the input
    - Fetch PR metadata and a unified diff from the repository the agent is running in
+   - For Azure DevOps metadata, use `az repos pr show --id <id> --org https://dev.azure.com/<org> -o json` exactly and do not add `--project`
    - Inspect changed files and nearby context where needed
    - Run safe local checks only when the repository conventions are obvious
    - Draft review comments without posting them
