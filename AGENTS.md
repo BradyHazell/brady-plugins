@@ -6,19 +6,23 @@ Human contributors should also read it — it doubles as a CONTRIBUTING guide.
 
 ## What this repo is
 
-`brady-plugins` is a personal Claude Code marketplace. Each plugin lives in `plugins/<name>/` and is also designed to be **content-portable** to other agents — the prompts, skills, and conventions are written so that someone using Cursor, Cline, Aider, or any other agent can lift the markdown content directly.
+`brady-plugins` is a personal Claude Code and Codex marketplace. Each plugin lives in `plugins/<name>/` and is also designed to be **content-portable** to other agents — the prompts, skills, and conventions are written so that someone using Cursor, Cline, Aider, or any other agent can lift the markdown content directly.
 
-The Claude Code marketplace mechanism (`.claude-plugin/marketplace.json`) is the install path; the content inside each plugin is not Claude-specific.
+The Claude Code marketplace mechanism (`.claude-plugin/marketplace.json`) and Codex marketplace mechanism (`.agents/plugins/marketplace.json`) are install paths; the content inside each plugin is not tool-specific.
 
 ## Repo layout
 
 ```
 brady-plugins/
 ├── .claude-plugin/
-│   └── marketplace.json          # registry of every plugin in this marketplace
+│   └── marketplace.json          # Claude Code registry of every plugin in this marketplace
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json      # Codex registry of every plugin in this marketplace
 ├── plugins/
 │   └── <plugin-name>/
 │       ├── .claude-plugin/plugin.json
+│       ├── .codex-plugin/plugin.json
 │       ├── agents/                # subagent definitions (Claude Code)
 │       ├── commands/              # slash commands (Claude Code)
 │       ├── skills/<name>/SKILL.md # progressive-disclosure knowledge
@@ -36,7 +40,7 @@ brady-plugins/
 
 ## When to bump versions
 
-Each plugin has its own `version` field in both `plugins/<plugin>/.claude-plugin/plugin.json` and the matching entry in the repo-root `.claude-plugin/marketplace.json`. **Both must stay in sync.** A plugin's CHANGELOG.md is the source of truth for what changed.
+Each plugin has its own `version` field in both `plugins/<plugin>/.claude-plugin/plugin.json` and `plugins/<plugin>/.codex-plugin/plugin.json`, plus the matching entry in the repo-root `.claude-plugin/marketplace.json`. **All plugin version fields must stay in sync.** Codex marketplace entries do not carry versions; Codex reads the version from `.codex-plugin/plugin.json`. A plugin's CHANGELOG.md is the source of truth for what changed.
 
 Follow Semantic Versioning (`MAJOR.MINOR.PATCH`):
 
@@ -55,8 +59,8 @@ README-only installation docs, marketplace docs, typo fixes, and other changes t
 A change to installed plugin behaviour or agent-consumed content under `plugins/<name>/` should result in:
 
 1. **Update `plugins/<name>/CHANGELOG.md`** — add an entry under a new version heading (or under `## [Unreleased]` if you're not bumping yet). Use the Keep a Changelog format already present.
-2. **Bump the version** in `plugins/<name>/.claude-plugin/plugin.json` per the rules above.
-3. **Bump the matching version** in `/.claude-plugin/marketplace.json` (top-level marketplace registry) — these two version fields must always agree.
+2. **Bump the version** in both `plugins/<name>/.claude-plugin/plugin.json` and `plugins/<name>/.codex-plugin/plugin.json` per the rules above.
+3. **Bump the matching version** in `/.claude-plugin/marketplace.json` (top-level Claude marketplace registry) — these version fields must always agree.
 4. **Update `plugins/<name>/README.md`** if the change affects how an end-user uses the plugin.
 5. **Update `plugins/<name>/AGENTS.md`** if the change affects how a contributor or maintaining agent should reason about the plugin.
 
@@ -68,14 +72,16 @@ To add a plugin (`my-plugin`):
 
 1. Create `plugins/my-plugin/` with:
    - `.claude-plugin/plugin.json` (name, version `1.0.0` or `0.1.0`, description, author, license, homepage, repository, keywords)
+   - `.codex-plugin/plugin.json` (same name/version/description, plus `skills: "./skills/"` when the plugin has skills and the required `interface` metadata)
    - Plugin content (agents, commands, skills, docs as needed)
    - `README.md` — end-user docs
    - `AGENTS.md` — per-plugin maintainer notes (style conventions, layout, where to extend)
    - `CLAUDE.md` — single line: `@AGENTS.md`
    - `CHANGELOG.md` — start at `## [1.0.0] — YYYY-MM-DD` (or `0.1.0` if pre-release)
 2. Add an entry to `/.claude-plugin/marketplace.json` under `plugins[]` with name, source (`./plugins/my-plugin`), description, version (matching plugin.json), category, keywords.
-3. Update the **Plugins** table in `/README.md` with a one-line summary + link.
-4. Optionally update this AGENTS.md if the new plugin introduces a convention worth documenting at the repo level.
+3. Add an entry to `/.agents/plugins/marketplace.json` under `plugins[]` with name, local source path, policy, and category.
+4. Update the **Plugins** table in `/README.md` with a one-line summary + link.
+5. Optionally update this AGENTS.md if the new plugin introduces a convention worth documenting at the repo level.
 
 A new plugin starts at `1.0.0` if it's reasonably complete and you're confident in the surface area. Use `0.x.y` only if you genuinely expect breaking changes in the near term.
 
@@ -121,7 +127,7 @@ Both at the repo root and inside each plugin, there's an AGENTS.md (the source o
 
 ## Marketplace.json conventions
 
-The repo-root `.claude-plugin/marketplace.json` lists every plugin. Each entry needs:
+The repo-root `.claude-plugin/marketplace.json` lists every plugin for Claude Code. Each entry needs:
 
 ```json
 {
@@ -136,9 +142,29 @@ The repo-root `.claude-plugin/marketplace.json` lists every plugin. Each entry n
 
 The `description` and `version` in marketplace.json must match the per-plugin `plugin.json`. The category and keywords are repo-level metadata for discovery.
 
+The repo-root `.agents/plugins/marketplace.json` lists every plugin for Codex. Each entry needs:
+
+```json
+{
+  "name": "plugin-name",
+  "source": {
+    "source": "local",
+    "path": "./plugins/plugin-name"
+  },
+  "policy": {
+    "installation": "AVAILABLE",
+    "authentication": "ON_INSTALL"
+  },
+  "category": "Documentation"
+}
+```
+
+Codex marketplace entries should keep `source.path` relative to the marketplace root as `./plugins/<plugin-name>`, include both policy fields, and use UI-friendly title-case categories. Codex reads description and version from `plugins/<plugin>/.codex-plugin/plugin.json`.
+
 ## Common mistakes to avoid
 
-- **Forgetting to update marketplace.json** after bumping a plugin's version — users install via the marketplace registry, which becomes wrong.
+- **Forgetting to update the Claude marketplace and Codex manifest** after bumping a plugin's version — users install via marketplace metadata, which becomes wrong.
+- **Adding a plugin to only one marketplace** — new plugins should be listed in both `.claude-plugin/marketplace.json` and `.agents/plugins/marketplace.json`.
 - **Bundling unrelated plugin changes** in one commit — makes it hard to release each plugin independently.
 - **Adding "Claude" to a prompt** because the plugin is Claude-Code-installed — the *mechanism* is Claude Code, but the *content* should stay portable.
 - **Editing CLAUDE.md** instead of AGENTS.md — CLAUDE.md is just an import pointer; edits go to the source.

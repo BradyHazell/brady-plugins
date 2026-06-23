@@ -13,6 +13,7 @@ Behavioural philosophy: act like a PM, not a stenographer. Challenge scope, surf
 ```
 prd-drafter/
 ├── .claude-plugin/plugin.json   # plugin manifest (name, version, author, MIT)
+├── .codex-plugin/plugin.json    # Codex manifest (same version, skills + interface metadata)
 ├── agents/
 │   ├── prd-interviewer.md       # Phase 1 — conversational discovery
 │   ├── prd-drafter.md           # Phase 2 — turns Feature Context block into the PRD
@@ -122,7 +123,7 @@ If you rename anything, grep the plugin folder for the old name first and update
 
 There's no automated test suite (yet). Verify changes by:
 
-1. Installing the plugin locally (`claude --plugin-dir ./plugins/prd-drafter`) or via the marketplace mechanism.
+1. Installing the plugin locally (`claude --plugin-dir ./plugins/prd-drafter`) or via the Claude/Codex marketplace mechanism.
 2. Running `/prd-drafter:draft` on a test feature both with and without a `.prdrc.json` at the test repo's root.
 3. Running `/prd-drafter:update` against an existing PRD (try all three flows).
 4. Running `/prd-drafter:validate` against PRDs in good and bad shape.

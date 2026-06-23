@@ -1,0 +1,38 @@
+{
+  "name": "pr-review",
+  "version": "1.0.2",
+  "description": "Reviews pull requests from a PR number or URL by fetching the diff from the current repository, drafting concise inline review comments, surfacing missing tests, risks, best-practice concerns, and author questions without posting anything.",
+  "author": {
+    "name": "BradyHazell",
+    "url": "https://github.com/BradyHazell"
+  },
+  "homepage": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/pr-review",
+  "repository": "https://github.com/BradyHazell/brady-plugins",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "pull-request",
+    "github",
+    "azure-devops",
+    "review",
+    "codex-plugin"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PR Review",
+    "shortDescription": "Draft high-signal pull request review comments.",
+    "longDescription": "Reviews pull requests from a PR number or URL by fetching the diff from the current repository, then drafts concise inline comments, missing-test notes, risk callouts, and author questions without posting anything.",
+    "developerName": "BradyHazell",
+    "category": "Development",
+    "capabilities": [
+      "Interactive",
+      "Read"
+    ],
+    "websiteURL": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/pr-review",
+    "defaultPrompt": [
+      "Review PR 123.",
+      "Review this pull request URL.",
+      "Find risks and missing tests in this PR."
+    ]
+  }
+}

@@ -1,26 +1,48 @@
 # brady-plugins
 
-A personal Claude Code plugin marketplace. The plugins also install into other agents (Codex, Cursor, Goose, etc.) via the open-plugin `npx plugins` CLI or the legacy `npx skills` CLI.
+A personal Claude Code and Codex plugin marketplace. The plugins also install into other agents (Cursor, Goose, etc.) via the open-plugin `npx plugins` CLI or the legacy `npx skills` CLI.
 
 ## Install
 
 ### Claude Code
 
+Bash:
+
+```bash
+claude plugins marketplace add BradyHazell/brady-plugins
+claude plugins install prd-drafter@brady-plugins
+claude plugins install pr-review@brady-plugins
 ```
+
+Slash commands:
+
+```text
 /plugin marketplace add BradyHazell/brady-plugins
 /plugin install prd-drafter@brady-plugins
 /plugin install pr-review@brady-plugins
 ```
 
-Update later:
+### Codex
 
-```
-/plugin marketplace update brady-plugins
-/plugin update prd-drafter@brady-plugins
-/plugin update pr-review@brady-plugins
+Add the marketplace, then install the plugins:
+
+Bash:
+
+```bash
+codex plugins add marketplace BradyHazell/brady-plugins
+codex plugins add prd-drafter@brady-plugins
+codex plugins add pr-review@brady-plugins
 ```
 
-### Other agents (Codex, Cursor, etc.)
+Slash commands:
+
+```text
+/plugins add marketplace BradyHazell/brady-plugins
+/plugins add prd-drafter@brady-plugins
+/plugins add pr-review@brady-plugins
+```
+
+### Other agents (Cursor, Goose, etc.)
 
 Preferred open-plugin CLI:
 
@@ -55,7 +77,7 @@ npx skills add BradyHazell/brady-plugins -a cursor
 | Plugin | Version | Summary |
 |---|---|---|
 | [**prd-drafter**](./plugins/prd-drafter) | 2.0.0 | Drafts Product Requirements Documents through conversational discovery, supports structured updates, and exports PRDs to browser-printable HTML. Configurable per-repo via `.prdrc.json`. |
-| [**pr-review**](./plugins/pr-review) | 1.0.0 | Reviews pull requests from a PR number or URL, fetches the diff from the current repo, and drafts concise inline review comments and author questions without posting anything. |
+| [**pr-review**](./plugins/pr-review) | 1.0.2 | Reviews pull requests from a PR number or URL, fetches the diff from the current repo, and drafts concise inline review comments and author questions without posting anything. |
 
 Each plugin has its own README with full details — click the plugin name above.
 

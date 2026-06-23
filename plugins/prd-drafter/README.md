@@ -18,12 +18,39 @@ A well-written PRD lets an engineer pick up a feature and build it without re-as
 
 ### Claude Code
 
+Bash:
+
+```bash
+claude plugins marketplace add BradyHazell/brady-plugins
+claude plugins install prd-drafter@brady-plugins
 ```
+
+Slash commands:
+
+```text
 /plugin marketplace add BradyHazell/brady-plugins
 /plugin install prd-drafter@brady-plugins
 ```
 
-### Other agents (Codex, Cursor, Goose, etc.)
+### Codex
+
+Add the marketplace, then install the plugin:
+
+Bash:
+
+```bash
+codex plugins add marketplace BradyHazell/brady-plugins
+codex plugins add prd-drafter@brady-plugins
+```
+
+Slash commands:
+
+```text
+/plugins add marketplace BradyHazell/brady-plugins
+/plugins add prd-drafter@brady-plugins
+```
+
+### Other agents (Cursor, Goose, etc.)
 
 Preferred open-plugin CLI:
 
@@ -241,6 +268,8 @@ The validator never certifies a PRD as "approved" — that's a stakeholder decis
 ```
 prd-drafter/
 ├── .claude-plugin/
+│   └── plugin.json
+├── .codex-plugin/
 │   └── plugin.json
 ├── agents/
 │   ├── prd-interviewer.md

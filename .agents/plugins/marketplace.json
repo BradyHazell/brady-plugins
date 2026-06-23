@@ -1,0 +1,32 @@
+{
+  "name": "brady-plugins",
+  "interface": {
+    "displayName": "Brady Plugins"
+  },
+  "plugins": [
+    {
+      "name": "prd-drafter",
+      "source": {
+        "source": "local",
+        "path": "./plugins/prd-drafter"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Documentation"
+    },
+    {
+      "name": "pr-review",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pr-review"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    }
+  ]
+}

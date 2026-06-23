@@ -13,6 +13,7 @@ The plugin is intentionally draft-only. It must not post comments, submit review
 ```
 pr-review/
 ├── .claude-plugin/plugin.json
+├── .codex-plugin/plugin.json
 ├── agents/
 │   └── pr-reviewer.md
 ├── commands/

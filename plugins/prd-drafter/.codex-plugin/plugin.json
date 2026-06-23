@@ -1,0 +1,37 @@
+{
+  "name": "prd-drafter",
+  "version": "2.0.0",
+  "description": "Drafts Product Requirements Documents through conversational discovery, supports structured updates, and exports PRDs to browser-printable HTML. Acts as a PM, not a stenographer - challenges scope, surfaces hidden assumptions, and treats Open Questions as a first-class output so the PRD is genuinely useful as a source of truth for implementation.",
+  "author": {
+    "name": "BradyHazell",
+    "url": "https://github.com/BradyHazell"
+  },
+  "homepage": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/prd-drafter",
+  "repository": "https://github.com/BradyHazell/brady-plugins",
+  "license": "MIT",
+  "keywords": [
+    "prd",
+    "product",
+    "requirements",
+    "documentation",
+    "codex-plugin"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PRD Drafter",
+    "shortDescription": "Draft, update, validate, and export PRDs.",
+    "longDescription": "Drafts Product Requirements Documents through conversational discovery, supports structured updates, and exports PRDs to browser-printable HTML. It challenges vague scope, surfaces assumptions, and keeps open questions explicit.",
+    "developerName": "BradyHazell",
+    "category": "Documentation",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/BradyHazell/brady-plugins/tree/main/plugins/prd-drafter",
+    "defaultPrompt": [
+      "Draft a PRD for a new feature.",
+      "Update this PRD with new decisions.",
+      "Export this PRD to HTML."
+    ]
+  }
+}

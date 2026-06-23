@@ -6,6 +6,70 @@ It is designed for high-signal review comments: blockers, concerns, suggestions,
 
 It never posts comments or submits a review.
 
+## Installation
+
+### Claude Code
+
+Bash:
+
+```bash
+claude plugins marketplace add BradyHazell/brady-plugins
+claude plugins install pr-review@brady-plugins
+```
+
+Slash commands:
+
+```text
+/plugin marketplace add BradyHazell/brady-plugins
+/plugin install pr-review@brady-plugins
+```
+
+### Codex
+
+Add the marketplace, then install the plugin:
+
+Bash:
+
+```bash
+codex plugins add marketplace BradyHazell/brady-plugins
+codex plugins add pr-review@brady-plugins
+```
+
+Slash commands:
+
+```text
+/plugins add marketplace BradyHazell/brady-plugins
+/plugins add pr-review@brady-plugins
+```
+
+### Other agents (Cursor, Goose, etc.)
+
+Preferred open-plugin CLI:
+
+```bash
+# Confirm the repo is discoverable
+npx plugins discover BradyHazell/brady-plugins
+
+# Auto-detect installed targets
+npx plugins add BradyHazell/brady-plugins
+
+# If auto-detect says "No supported targets detected", choose one explicitly
+npx plugins add BradyHazell/brady-plugins --target codex
+npx plugins add BradyHazell/brady-plugins --target cursor
+npx plugins add BradyHazell/brady-plugins --target claude-code
+```
+
+Legacy skills CLI:
+
+```bash
+# Auto-detect installed agents
+npx skills add BradyHazell/brady-plugins
+
+# Or target a specific agent
+npx skills add BradyHazell/brady-plugins -a codex
+npx skills add BradyHazell/brady-plugins -a cursor
+```
+
 ## Usage
 
 Review a PR number in the current GitHub repository:
