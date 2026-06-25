@@ -31,11 +31,28 @@ brady-plugins/
 │       ├── CLAUDE.md              # one-liner: @AGENTS.md
 │       ├── README.md              # end-user docs
 │       └── CHANGELOG.md           # per-plugin version history
+├── skills/
+│   └── <skill-name>/
+│       └── SKILL.md               # standalone progressive-disclosure skill
 ├── AGENTS.md                      # this file
 ├── CLAUDE.md                      # one-liner: @AGENTS.md
 ├── README.md                      # marketplace install + plugin index
 ├── LICENSE                        # MIT
 └── .gitignore
+```
+
+## Standalone skills
+
+Use root-level `skills/<skill-name>/` for a single self-contained skill that does not need commands, agents, docs, bundled plugin metadata, or marketplace installation. Standalone skills should contain only the skill files needed by an agent to use the skill, usually just `SKILL.md`.
+
+Standalone skills should remain agent-agnostic. Do not add platform-specific metadata or context files, such as OpenAI, Claude Code, Cursor, or other agent wrappers, unless the skill explicitly needs them and the canonical instructions still live in `SKILL.md`.
+
+Standalone skills do not need plugin manifests, plugin marketplace entries, plugin versions, plugin READMEs, or plugin changelogs. If a standalone skill grows into a broader capability with commands, multiple skills, or install-time metadata, promote it into `plugins/<plugin-name>/` and follow the normal plugin release rules.
+
+Validate standalone skills with the available skill validator before finishing. In this repo's current maintainer environment, use:
+
+```bash
+python <skill-creator>/scripts/quick_validate.py skills/<skill-name>
 ```
 
 ## When to bump versions

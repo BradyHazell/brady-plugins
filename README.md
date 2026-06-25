@@ -81,6 +81,14 @@ npx skills add BradyHazell/brady-plugins -a cursor
 
 Each plugin has its own README with full details — click the plugin name above.
 
+## Standalone Skills
+
+Standalone skills live under `skills/` when they are useful on their own and do not need a full plugin wrapper.
+
+| Skill | Summary |
+|---|---|
+| [**humanize**](./skills/humanize) | Rewrites AI-generated text into natural, human-to-human wording while preserving important meaning and formatting. |
+
 ## Contributing
 
 This is a personal repo, but issues and pull requests are open for suggestions, new plugin ideas, prompt improvements, and compatibility fixes for other agents.
