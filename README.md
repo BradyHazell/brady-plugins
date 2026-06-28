@@ -29,17 +29,9 @@ Add the marketplace, then install the plugins:
 Bash:
 
 ```bash
-codex plugins add marketplace BradyHazell/brady-plugins
-codex plugins add prd-drafter@brady-plugins
-codex plugins add pr-review@brady-plugins
-```
-
-Slash commands:
-
-```text
-/plugins add marketplace BradyHazell/brady-plugins
-/plugins add prd-drafter@brady-plugins
-/plugins add pr-review@brady-plugins
+codex plugin marketplace add BradyHazell/brady-plugins
+codex plugin add prd-drafter@brady-plugins
+codex plugin add pr-review@brady-plugins
 ```
 
 ### Other agents (Cursor, Goose, etc.)
